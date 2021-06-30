@@ -1,0 +1,36 @@
+.form {
+  margin: 30px;
+  margin-left: 30px;
+  border: 2px solid black;
+  padding: 10px;
+  width: auto;
+  box-shadow: 5px 10px #888888;
+}
+
+.input {
+  width: 90%;
+  height: 30px;
+  margin: 10px;
+  font-size: 10px;
+}
+
+.output {
+  width: 90%;
+  min-height: 400px;
+  height: auto;
+  margin: 10px;
+  font-size: 10px;
+}
+
+.heading {
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn {
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+  background: lightblue;
+}
