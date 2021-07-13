@@ -10,7 +10,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 
 export class AppComponent {
   title = 'app';
-  outputData = '';
+  outputData = 'Processed Natural Language text will come here.';
 
   exampleForm = new FormGroup({
     input: new FormControl(),
@@ -23,21 +23,19 @@ export class AppComponent {
 
     setTimeout(() => {
         (async () => {
-          // server 'http://131.234.29.133:8081/'//http://localhost:8080/
-          let baseUrl = 'http://131.234.29.133:8082/getOntology';
+          // server 'http://131.234.29.133:8082'
+          let baseUrl = 'http://localhost:8080/getOntology';
           const value = this.exampleForm.controls.input.value;
           if (value != null) {
             baseUrl = baseUrl + '?path=' + value;
           }
           // const url = new URL(baseUrl + 'getOntology?path=' + value);
           const response = await fetch(baseUrl.toString());
-          const data = await response.json();
           // tslint:disable-next-line:triple-equals
           if (response.status != 200) {
-            this.outputData = JSON.stringify(data);
+            this.outputData = 'Bad Request Error. \n' + response.body;
           } else {
-            this.outputData = JSON.stringify(data, undefined, 4);
-            // this.outputData = data.toString();
+            this.outputData = await response.json();
           }
         })();
       },
